@@ -4,7 +4,7 @@ import Crypto from '../../components/Crypto';
 import DataCrypto from '../../store/data';
 import {NavLink} from './styles';
 
-const CryptoList = () => {
+const CryptoList = (): JSX.Element => {
   const renderItem = ({item}: any) => <Crypto item={item} />;
   return (
     <SafeAreaView>
