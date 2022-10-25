@@ -1,6 +1,7 @@
+import 'react-native-gesture-handler';
 import React from 'react';
-import Home from './src/pages/Home';
+import RootStack from './src/navigator/RootStack';
 
-const App = (): JSX.Element => <Home />;
+const App = () => <RootStack />;
 
 export default App;
