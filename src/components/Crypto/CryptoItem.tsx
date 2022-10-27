@@ -1,12 +1,13 @@
 import React, {FunctionComponent} from 'react';
 import {CryptoProps} from '../../interfaces';
-import {colors} from '../colors';
+import theme from '../../utils/theme';
 import RegularText from '../Texts/RegularText';
 import SmallText from '../Texts/SmallText';
 import CryptoLogo from './CryptoLogo';
 import {
   ArrowImage,
   CryptoItemRow,
+  Divider,
   LeftData,
   LeftView,
   RightView,
@@ -15,49 +16,52 @@ import {
 import up from '../../assets/arrow-up.png';
 import down from '../../assets/arrow-down.png';
 
-const CryptoItem: FunctionComponent<CryptoProps> = props => {
-  return (
-    <CryptoItemRow>
-      <LeftView>
-        <CryptoLogo icon={props.icon} />
-        <LeftData>
-          <RegularText
-            textStyles={{
-              color: colors.textDark,
-              fontWeight: 'bold',
-            }}>
-            {props.name}
-          </RegularText>
-          <SmallText
-            textStyles={{
-              color: colors.textMedium,
-            }}>
-            {props.slug}
-          </SmallText>
-        </LeftData>
-      </LeftView>
-      <RightView>
+const CryptoItem: FunctionComponent<CryptoProps> = ({
+  icon,
+  name,
+  slug,
+  price,
+  percentage_changed_last_24,
+}) => (
+  <CryptoItemRow>
+    <LeftView>
+      <CryptoLogo icon={icon} />
+      <LeftData>
         <RegularText
           textStyles={{
-            color: colors.textDark,
-            fontWeight: 'bold',
+            color: theme.colors.textDark,
           }}>
-          $ {props.price}
+          {name}
         </RegularText>
-        {props.percentage_last_24 > 0 ? (
-          <SmallText textStyles={{color: colors.green}}>
-            <ArrowImage source={up} />
-            {props.percentage_last_24}%
-          </SmallText>
-        ) : (
-          <SmallText textStyles={{color: colors.red}}>
-            <ArrowImage source={down} />
-            {props.percentage_last_24}%
-          </SmallText>
-        )}
-      </RightView>
-    </CryptoItemRow>
-  );
-};
+        <SmallText
+          textStyles={{
+            color: theme.colors.textMedium,
+          }}>
+          {slug}
+        </SmallText>
+      </LeftData>
+    </LeftView>
+    <RightView>
+      <RegularText
+        textStyles={{
+          color: theme.colors.textDark,
+        }}>
+        $ {price}
+      </RegularText>
+      {percentage_changed_last_24 > 0 ? (
+        <SmallText textStyles={{color: theme.colors.green}}>
+          <ArrowImage source={up} />
+          {percentage_changed_last_24}%
+        </SmallText>
+      ) : (
+        <SmallText textStyles={{color: theme.colors.red}}>
+          <ArrowImage source={down} />
+          {percentage_changed_last_24}%
+        </SmallText>
+      )}
+    </RightView>
+    <Divider />
+  </CryptoItemRow>
+);
 
 export default CryptoItem;

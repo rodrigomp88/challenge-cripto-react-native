@@ -1,10 +1,10 @@
 import styled from 'styled-components/native';
-import {colors} from '../colors';
+import theme from '../../utils/theme';
 
 export const ButtonView = styled.TouchableOpacity`
   align-items: center;
-  background-color: ${colors.white};
-  color: ${colors.primary};
+  background-color: ${theme.colors.white};
+  color: ${theme.colors.primary};
   width: 100%;
   padding: 40px;
 `;

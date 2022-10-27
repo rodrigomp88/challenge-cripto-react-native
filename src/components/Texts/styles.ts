@@ -1,8 +1,8 @@
 import styled from 'styled-components/native';
-import {colors} from '../colors';
+import theme from '../../utils/theme';
 
 export const StyledTitleText = styled.Text`
-  color: ${colors.white};
+  color: ${theme.colors.white};
   text-align: left;
   font-weight: bold;
 `;

@@ -1,17 +1,15 @@
 import React, {FunctionComponent} from 'react';
 import {ButtonProps} from '../../interfaces';
-import {colors} from '../colors';
+import theme from '../../utils/theme';
 import RegularText from '../Texts/RegularText';
 import {ButtonView} from './styles';
 
-const RegularButton: FunctionComponent<ButtonProps> = props => {
-  return (
-    <ButtonView>
-      <RegularText textStyles={{color: colors.primary}}>
-        {props.children}
-      </RegularText>
-    </ButtonView>
-  );
-};
+const RegularButton: FunctionComponent<ButtonProps> = ({children}) => (
+  <ButtonView>
+    <RegularText textStyles={{color: theme.colors.primary}}>
+      {children}
+    </RegularText>
+  </ButtonView>
+);
 
 export default RegularButton;

@@ -8,11 +8,6 @@ import {
   ViewStyle,
 } from 'react-native';
 
-export interface TextProps {
-  textStyles?: StyleProp<TextStyle>;
-  children: ReactNode;
-}
-
 export interface TitleProps {
   mainText: string;
   mainTextStyle?: StyleProp<TextStyle>;
@@ -30,7 +25,7 @@ export interface CryptoProps {
   name: string;
   slug: string;
   price: number;
-  percentage_last_24: number;
+  percentage_changed_last_24: number;
 }
 
 export interface CryptopSectionProps {
@@ -38,12 +33,12 @@ export interface CryptopSectionProps {
 }
 
 export interface CryptoLogoProps {
-  icon: any;
+  icon: ImageSourcePropType;
 }
 
 export interface ButtonProps {
-  btnStyles?: any;
-  textStyles?: any;
+  btnStyles?: StyleProp<ViewStyle>;
+  textStyles?: StyleProp<TextStyle>;
   children: ReactNode;
   onPress: ((e: GestureResponderEvent) => void) | undefined;
 }

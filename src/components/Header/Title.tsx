@@ -3,23 +3,21 @@ import {StyledViewTitle} from './styles';
 
 import TitleText from '../Texts/TitleText';
 import {TitleProps} from '../../interfaces';
-import {colors} from '../colors';
+import theme from '../../utils/theme';
 
-const Title: FunctionComponent<TitleProps> = props => {
-  return (
-    <StyledViewTitle>
-      <TitleText
-        textStyles={[
-          {
-            color: colors.white,
-            fontSize: 20,
-          },
-          props.mainTextStyle,
-        ]}>
-        {props.mainText}
-      </TitleText>
-    </StyledViewTitle>
-  );
-};
+const Title: FunctionComponent<TitleProps> = ({mainTextStyle, mainText}) => (
+  <StyledViewTitle>
+    <TitleText
+      textStyles={[
+        {
+          color: theme.colors.white,
+          fontSize: 20,
+        },
+        mainTextStyle,
+      ]}>
+      {mainText}
+    </TitleText>
+  </StyledViewTitle>
+);
 
 export default Title;

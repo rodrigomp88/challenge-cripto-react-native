@@ -1,13 +1,14 @@
-import React, {FunctionComponent} from 'react';
-import {TextProps} from '../../interfaces';
+import React, {FunctionComponent, ReactNode} from 'react';
+import {StyleProp, TextStyle} from 'react-native';
 import {StyledRegularText} from './styles';
 
-const RegularText: FunctionComponent<TextProps> = props => {
-  return (
-    <StyledRegularText style={props.textStyles}>
-      {props.children}
-    </StyledRegularText>
-  );
-};
+interface Props {
+  textStyles?: StyleProp<TextStyle>;
+  children: ReactNode;
+}
+
+const RegularText: FunctionComponent<Props> = ({textStyles, children}) => (
+  <StyledRegularText style={textStyles}>{children}</StyledRegularText>
+);
 
 export default RegularText;

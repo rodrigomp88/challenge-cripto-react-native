@@ -1,16 +1,19 @@
 import React, {FunctionComponent} from 'react';
 import {CryptopSectionProps} from '../../interfaces';
 import CryptoItem from './CryptoItem';
-import {CryptoList, CryptoSectionBackground} from './styles';
+import {CryptoList, CryptoSectionBackground, Divider} from './styles';
 
-const CryptoSection: FunctionComponent<CryptopSectionProps> = props => {
+const CryptoSection: FunctionComponent<CryptopSectionProps> = ({data}) => {
+  const renderItem = ({item}: any) => <CryptoItem {...item} />;
+
   return (
     <CryptoSectionBackground>
       <CryptoList
-        data={props.data}
+        data={data}
         showsVerticalScrollIndicator={false}
         keyExtractor={({id}: any) => id.toString()}
-        renderItem={({item}: any) => <CryptoItem {...item} />}
+        renderItem={renderItem}
+        ItemSeparatorComponent={Divider}
       />
     </CryptoSectionBackground>
   );
