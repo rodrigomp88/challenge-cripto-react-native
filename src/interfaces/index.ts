@@ -28,10 +28,6 @@ export interface CryptoProps {
   percentage_changed_last_24: number;
 }
 
-export interface CryptopSectionProps {
-  data: Array<CryptoProps>;
-}
-
 export interface CryptoLogoProps {
   icon: ImageSourcePropType;
 }

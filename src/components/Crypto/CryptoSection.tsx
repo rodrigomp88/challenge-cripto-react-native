@@ -1,17 +1,22 @@
-import React, {FunctionComponent} from 'react';
-import {CryptopSectionProps} from '../../interfaces';
+import React from 'react';
+import {ListRenderItem} from 'react-native';
+import {FlatList} from 'react-native-gesture-handler';
+import {CryptoProps} from '../../interfaces';
+import DataCrypto from '../../store/DataCrypto';
 import CryptoItem from './CryptoItem';
-import {CryptoList, CryptoSectionBackground, Divider} from './styles';
+import {CryptoSectionBackground, Divider} from './styles';
 
-const CryptoSection: FunctionComponent<CryptopSectionProps> = ({data}) => {
-  const renderItem = ({item}: any) => <CryptoItem {...item} />;
+const CryptoSection = () => {
+  const renderItem: ListRenderItem<CryptoProps> = ({item}) => (
+    <CryptoItem {...item} />
+  );
 
   return (
     <CryptoSectionBackground>
-      <CryptoList
-        data={data}
+      <FlatList
+        data={DataCrypto}
         showsVerticalScrollIndicator={false}
-        keyExtractor={({id}: any) => id.toString()}
+        keyExtractor={item => item.id.toString()}
         renderItem={renderItem}
         ItemSeparatorComponent={Divider}
       />

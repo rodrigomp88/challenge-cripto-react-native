@@ -5,7 +5,6 @@ import {HomeContainer} from './styles';
 import theme from '../../utils/theme';
 
 import CryptoSection from '../../components/Crypto/CryptoSection';
-import DataCrypto from '../../store/DataCrypto';
 import RegularButton from '../../components/Button/RegularButton';
 
 const Home: FunctionComponent = () => (
@@ -14,7 +13,7 @@ const Home: FunctionComponent = () => (
       barStyle="light-content"
       backgroundColor={theme.colors.primary}
     />
-    <CryptoSection data={DataCrypto} />
+    <CryptoSection />
 
     <RegularButton onPress={() => {}}>+ Add a Cryptocurrency</RegularButton>
   </HomeContainer>

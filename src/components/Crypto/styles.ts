@@ -10,10 +10,6 @@ export const CryptoSectionBackground = styled.View`
   flex: 2;
 `;
 
-export const CryptoList = styled.FlatList`
-  width: 100%;
-`;
-
 //CryptoItem Styles
 export const CryptoItemRow = styled.View`
   flex-direction: row;
@@ -24,8 +20,8 @@ export const CryptoItemRow = styled.View`
 `;
 
 export const Divider = styled.View`
-  border-bottom-width: 1px;
-  border-bottom: solid ${theme.colors.textLight};
+  border-bottom-width: 0.1px;
+  border: ${theme.colors.neutral};
   margin-bottom: 20px;
 `;
 

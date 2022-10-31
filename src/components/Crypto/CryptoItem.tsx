@@ -16,28 +16,22 @@ import {
 import up from '../../assets/arrow-up.png';
 import down from '../../assets/arrow-down.png';
 
-const CryptoItem: FunctionComponent<CryptoProps> = ({
-  icon,
-  name,
-  slug,
-  price,
-  percentage_changed_last_24,
-}) => (
+const CryptoItem: FunctionComponent<CryptoProps> = item => (
   <CryptoItemRow>
     <LeftView>
-      <CryptoLogo icon={icon} />
+      <CryptoLogo icon={item.icon} />
       <LeftData>
         <RegularText
           textStyles={{
             color: theme.colors.textDark,
           }}>
-          {name}
+          {item.name}
         </RegularText>
         <SmallText
           textStyles={{
             color: theme.colors.textMedium,
           }}>
-          {slug}
+          {item.slug}
         </SmallText>
       </LeftData>
     </LeftView>
@@ -46,17 +40,17 @@ const CryptoItem: FunctionComponent<CryptoProps> = ({
         textStyles={{
           color: theme.colors.textDark,
         }}>
-        $ {price}
+        $ {item.price}
       </RegularText>
-      {percentage_changed_last_24 > 0 ? (
+      {item.percentage_changed_last_24 > 0 ? (
         <SmallText textStyles={{color: theme.colors.green}}>
           <ArrowImage source={up} />
-          {percentage_changed_last_24}%
+          {item.percentage_changed_last_24}%
         </SmallText>
       ) : (
         <SmallText textStyles={{color: theme.colors.red}}>
           <ArrowImage source={down} />
-          {percentage_changed_last_24}%
+          {item.percentage_changed_last_24}%
         </SmallText>
       )}
     </RightView>
