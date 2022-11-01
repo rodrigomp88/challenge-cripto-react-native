@@ -1,8 +1,12 @@
-import React, {FunctionComponent} from 'react';
-import {CryptoLogoProps} from '../../interfaces';
+import React from 'react';
+import {ImageSourcePropType} from 'react-native';
 import {Image, StyledView} from './styles';
 
-const CryptoLogo: FunctionComponent<CryptoLogoProps> = ({icon}) => (
+type Props = {
+  icon: ImageSourcePropType;
+};
+
+const CryptoLogo: React.FC<Props> = ({icon}) => (
   <StyledView>
     <Image source={icon} />
   </StyledView>

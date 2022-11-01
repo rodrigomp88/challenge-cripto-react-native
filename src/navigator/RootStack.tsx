@@ -11,11 +11,11 @@ import Profile from '../components/Header/Profile';
 import theme from '../utils/theme';
 import profile from '../assets/profile.png';
 
-type RootStackParamList = {
+type Props = {
   Home: undefined;
 };
 
-const Stack = createStackNavigator<RootStackParamList>();
+const Stack = createStackNavigator<Props>();
 
 const RootStack = () => (
   <NavigationContainer>
@@ -23,25 +23,16 @@ const RootStack = () => (
       screenOptions={{
         headerStyle: {
           backgroundColor: theme.colors.primary,
-          borderBottomWidth: 0,
-          shadowColor: 'transparent',
-          shadowOpacity: 0,
-          elevation: 0,
+          elevation: 10,
           height: 120,
         },
-        headerTintColor: theme.colors.secondary,
         headerRightContainerStyle: {
           paddingRight: 25,
         },
         headerLeftContainerStyle: {
           paddingLeft: 10,
         },
-        headerRight: () => (
-          <Profile
-            img={profile}
-            imgContainerStyle={{backgroundColor: theme.colors.primary}}
-          />
-        ),
+        headerRight: () => <Profile img={profile} />,
       }}>
       <Stack.Screen
         name="Home"

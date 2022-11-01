@@ -1,7 +1,7 @@
 import React from 'react';
 import {ListRenderItem} from 'react-native';
 import {FlatList} from 'react-native-gesture-handler';
-import {CryptoProps} from '../../interfaces';
+import {CryptoProps} from '../../interfaces/cryptoModel';
 import DataCrypto from '../../store/DataCrypto';
 import CryptoItem from './CryptoItem';
 import {CryptoSectionBackground, Divider} from './styles';

@@ -1,60 +1,45 @@
-import React, {FunctionComponent} from 'react';
-import {CryptoProps} from '../../interfaces';
-import theme from '../../utils/theme';
-import RegularText from '../Texts/RegularText';
-import SmallText from '../Texts/SmallText';
+import React from 'react';
+import {CryptoProps} from '../../interfaces/cryptoModel';
 import CryptoLogo from './CryptoLogo';
 import {
   ArrowImage,
   CryptoItemRow,
-  Divider,
+  CryptoName,
+  CryptoSlug,
   LeftData,
   LeftView,
+  Price,
   RightView,
+  TextGreen,
+  TextRed,
 } from './styles';
 
 import up from '../../assets/arrow-up.png';
 import down from '../../assets/arrow-down.png';
 
-const CryptoItem: FunctionComponent<CryptoProps> = item => (
+const CryptoItem: React.FC<CryptoProps> = item => (
   <CryptoItemRow>
     <LeftView>
       <CryptoLogo icon={item.icon} />
       <LeftData>
-        <RegularText
-          textStyles={{
-            color: theme.colors.textDark,
-          }}>
-          {item.name}
-        </RegularText>
-        <SmallText
-          textStyles={{
-            color: theme.colors.textMedium,
-          }}>
-          {item.slug}
-        </SmallText>
+        <CryptoName>{item.name}</CryptoName>
+        <CryptoSlug>{item.slug}</CryptoSlug>
       </LeftData>
     </LeftView>
     <RightView>
-      <RegularText
-        textStyles={{
-          color: theme.colors.textDark,
-        }}>
-        $ {item.price}
-      </RegularText>
+      <Price>${item.price}</Price>
       {item.percentage_changed_last_24 > 0 ? (
-        <SmallText textStyles={{color: theme.colors.green}}>
+        <TextGreen>
           <ArrowImage source={up} />
           {item.percentage_changed_last_24}%
-        </SmallText>
+        </TextGreen>
       ) : (
-        <SmallText textStyles={{color: theme.colors.red}}>
+        <TextRed>
           <ArrowImage source={down} />
           {item.percentage_changed_last_24}%
-        </SmallText>
+        </TextRed>
       )}
     </RightView>
-    <Divider />
   </CryptoItemRow>
 );
 

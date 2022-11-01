@@ -1,22 +1,13 @@
-import React, {FunctionComponent} from 'react';
-import {StyledViewTitle} from './styles';
+import React from 'react';
+import {StyledViewTitle, TitleText} from './styles';
 
-import TitleText from '../Texts/TitleText';
-import {TitleProps} from '../../interfaces';
-import theme from '../../utils/theme';
+type Props = {
+  mainText: string;
+};
 
-const Title: FunctionComponent<TitleProps> = ({mainTextStyle, mainText}) => (
+const Title: React.FC<Props> = ({mainText}) => (
   <StyledViewTitle>
-    <TitleText
-      textStyles={[
-        {
-          color: theme.colors.white,
-          fontSize: 20,
-        },
-        mainTextStyle,
-      ]}>
-      {mainText}
-    </TitleText>
+    <TitleText>{mainText}</TitleText>
   </StyledViewTitle>
 );
 

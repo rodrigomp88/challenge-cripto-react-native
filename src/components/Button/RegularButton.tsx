@@ -1,14 +1,15 @@
-import React, {FunctionComponent} from 'react';
-import {ButtonProps} from '../../interfaces';
-import theme from '../../utils/theme';
-import RegularText from '../Texts/RegularText';
-import {ButtonView} from './styles';
+import React, {ReactNode} from 'react';
+import {GestureResponderEvent} from 'react-native';
+import {ButtonView, ButtonText} from './styles';
 
-const RegularButton: FunctionComponent<ButtonProps> = ({children}) => (
+type Props = {
+  children: ReactNode;
+  onPress: ((e: GestureResponderEvent) => void) | undefined;
+};
+
+const RegularButton: React.FC<Props> = ({children}) => (
   <ButtonView>
-    <RegularText textStyles={{color: theme.colors.primary}}>
-      {children}
-    </RegularText>
+    <ButtonText>{children}</ButtonText>
   </ButtonView>
 );
 
