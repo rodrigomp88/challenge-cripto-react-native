@@ -1,0 +1,91 @@
+import styled from 'styled-components/native';
+import theme from '../../utils/theme';
+
+//CryptoItem Styles
+export const CryptoItemRow = styled.View`
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 20px;
+`;
+
+export const LeftView = styled.View`
+  flex-direction: row;
+  justify-content: flex-start;
+  height: 100%;
+  align-items: center;
+  flex: 2;
+`;
+
+export const LeftData = styled.View`
+  margin-left: 10px;
+`;
+
+export const CryptoName = styled.Text`
+  color: ${theme.colors.textDark};
+  font-weight: 700;
+  font-size: 16px;
+`;
+
+export const CryptoSlug = styled.Text`
+  font-size: 14px;
+  text-align: left;
+  font-weight: normal;
+  color: ${theme.colors.textMedium};
+`;
+
+export const RightView = styled.View`
+  flex: 1;
+  left: 30px;
+`;
+
+export const Price = styled.Text`
+  color: ${theme.colors.textDark};
+  font-weight: 700;
+  font-size: 16px;
+`;
+
+export const ArrowImage = styled.Image`
+  width: 12px;
+  height: 11px;
+`;
+
+export const TextGreen = styled.Text`
+  color: ${theme.colors.green};
+  font-size: 14px;
+  font-weight: normal;
+`;
+
+export const TextRed = styled.Text`
+  color: ${theme.colors.red};
+  font-size: 14px;
+  font-weight: normal;
+`;
+
+//CryptoSection Styles
+export const CryptoSectionBackground = styled.View`
+  width: 100%;
+  padding-left: 25px;
+  padding-right: 25px;
+  padding-top: 30px;
+  flex: 2;
+`;
+
+export const Divider = styled.View`
+  border-bottom-width: 0.1px;
+  border: ${theme.colors.neutral};
+  margin-bottom: 20px;
+`;
+
+//CryptoLogo Styles
+export const StyledView = styled.View`
+  justify-content: center;
+  align-items: center;
+`;
+
+export const Image = styled.Image`
+  width: 48px;
+  height: 48px;
+  border-radius: 50px;
+`;
