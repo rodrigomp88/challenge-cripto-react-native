@@ -1,9 +1,7 @@
-// import {CryptoProps} from '../interfaces';
-
 import BTC from '../assets/btc.png';
 import ETH from '../assets/eth.png';
 import XRP from '../assets/xrp.png';
-import {CryptoProps} from '../interfaces/cryptoModel';
+import {CryptoProps} from '../interfaces';
 
 const DataCrypto: CryptoProps[] = [
   {
