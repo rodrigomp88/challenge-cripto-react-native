@@ -4,18 +4,26 @@ import {API_URL} from '@env';
 
 const useFetchCollection = () => {
   const [coins, setCoins] = useState<CryptoProps[]>([]);
+  const [loading, setLoading] = useState(false);
 
   const loadCryptosData = async () => {
-    const res = await fetch(API_URL);
-    const data = await res.json();
-    setCoins(data.data);
+    setLoading(true);
+    try {
+      const res = await fetch(API_URL);
+      const data = await res.json();
+      setCoins(data.data);
+      setLoading(false);
+    } catch (error) {
+      setLoading(false);
+      console.log(error);
+    }
   };
 
   useEffect(() => {
     loadCryptosData();
   }, []);
 
-  return {coins};
+  return {coins, loading};
 };
 
 export default useFetchCollection;
