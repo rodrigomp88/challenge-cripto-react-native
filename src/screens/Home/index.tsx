@@ -1,11 +1,15 @@
 import React from 'react';
 import {StatusBar} from 'react-native';
-import {HomeContainer} from './styles';
+import {ButtonView, HomeContainer, ButtonText} from './styles';
 import theme from '../../utils/theme';
 import CryptoSection from '../../components/Crypto/CryptoSection';
-import RegularButton from '../../components/Button/RegularButton';
 
-const Home = () => (
+import {StackScreenProps} from '@react-navigation/stack';
+import {PropsNavigator} from '../../navigator/RootStack';
+
+type Props = StackScreenProps<PropsNavigator>;
+
+const Home: React.FC<Props> = ({navigation}) => (
   <HomeContainer>
     <StatusBar
       barStyle="light-content"
@@ -13,7 +17,12 @@ const Home = () => (
     />
     <CryptoSection />
 
-    <RegularButton onPress={() => {}}>+ Add a Cryptocurrency</RegularButton>
+    <ButtonView onPress={() => navigation.navigate('AddNewCryptocurrency')}>
+      <ButtonText>+ Add New Crypto Currency</ButtonText>
+    </ButtonView>
+    {/* <RegularButton onPress={navigation.navigate('AddNewCryptocurrency')}>
+      + Add a Cryptocurrency
+    </RegularButton> */}
   </HomeContainer>
 );
 

@@ -1,8 +1,14 @@
 import styled from 'styled-components/native';
+import {Container} from '../../components/container';
 import theme from '../../utils/theme';
 
+export const AddContainer = styled(Container)`
+  width: 100%;
+`;
+
 export const ButtonView = styled.TouchableOpacity`
-  padding: 40px;
+  right: 40%;
+  padding: 10px;
 `;
 
 export const ButtonText = styled.Text`

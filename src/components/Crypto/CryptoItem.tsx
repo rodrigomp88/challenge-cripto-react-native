@@ -38,13 +38,13 @@ const CryptoItem: React.FC<CryptoProps> = item => (
       {item.metrics.market_data.percent_change_usd_last_24_hours > 0 ? (
         <TextGreen>
           <ArrowImage source={up} />
-          {item.metrics.market_data.percent_change_usd_last_24_hours.toFixed(5)}
+          {item.metrics.market_data.percent_change_usd_last_24_hours.toFixed(2)}
           %
         </TextGreen>
       ) : (
         <TextRed>
           <ArrowImage source={down} />
-          {item.metrics.market_data.percent_change_usd_last_24_hours.toFixed(5)}
+          {item.metrics.market_data.percent_change_usd_last_24_hours.toFixed(2)}
           %
         </TextRed>
       )}

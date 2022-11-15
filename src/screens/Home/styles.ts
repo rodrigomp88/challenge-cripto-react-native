@@ -7,3 +7,12 @@ export const HomeContainer = styled(Container)`
   width: 100%;
   flex: 1;
 `;
+
+export const ButtonView = styled.TouchableOpacity`
+  padding: 40px;
+`;
+
+export const ButtonText = styled.Text`
+  color: ${theme.colors.primary};
+  font-size: 16px;
+`;
