@@ -5,16 +5,10 @@ export const LoadingWrapper = styled.View`
   display: flex;
   align-items: center;
   justify-content: center;
+  height: 50%;
 `;
 
 export const LoadingText = styled.Text`
   font-size: 24px;
-`;
-
-export const Dot = styled.View`
-  background-color: ${theme.colors.primary};
-  border-radius: 50px;
-  width: 1px;
-  height: 1px;
-  margin: 0 1px;
+  color: ${theme.colors.secondary};
 `;
