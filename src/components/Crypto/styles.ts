@@ -1,6 +1,10 @@
 import styled from 'styled-components/native';
 import theme from '../../utils/theme';
 
+interface CryptoAdd {
+  readonly isActive: boolean;
+}
+
 //CryptoItem Styles
 export const CryptoItemRow = styled.View`
   flex-direction: row;
@@ -63,6 +67,17 @@ export const TextRed = styled.Text`
   font-weight: normal;
 `;
 
+export const StyledView = styled.View`
+  justify-content: center;
+  align-items: center;
+`;
+
+export const Image = styled.Image`
+  width: 48px;
+  height: 48px;
+  border-radius: 50px;
+`;
+
 //CryptoSection Styles
 export const CryptoSectionBackground = styled.View`
   width: 100%;
@@ -78,14 +93,46 @@ export const Divider = styled.View`
   margin-bottom: 20px;
 `;
 
-//CryptoLogo Styles
-export const StyledView = styled.View`
+//CryptoAddForm
+export const CryptoAddFormContainer = styled.View`
+  flex: 1;
+`;
+
+export const Title = styled.Text`
+  font-weight: bold;
+  color: ${theme.colors.textDark};
+  font-size: 24px;
+  top: 20%;
+  margin-bottom: 24px;
+`;
+
+export const Input = styled.TextInput<CryptoAdd>`
+  padding-left: 10px;
+  border-width: 0.5px;
+  border-radius: 4px;
+  font-size: 16px;
+  height: 55px;
+  top: 20%;
+  border: 1px solid
+    ${props =>
+      props.isActive ? theme.colors.secondary : theme.colors.textLight};
+`;
+
+export const ButtonAdd = styled.TouchableOpacity`
+  background-color: ${theme.colors.secondary};
+  border-radius: 4px;
+  color: black;
+  height: 55px;
+  width: 50%;
+  margin-left: 50%;
+  top: 25%;
   justify-content: center;
   align-items: center;
 `;
 
-export const Image = styled.Image`
-  width: 48px;
-  height: 48px;
-  border-radius: 50px;
+export const ButtonText = styled.Text`
+  color: ${props =>
+    props.disabled ? theme.colors.disabled : theme.colors.primary};
+  font-weight: bold;
+  font-size: 18px;
 `;

@@ -5,6 +5,7 @@ import theme from '../../utils/theme';
 export const StyledViewTitle = styled.View`
   flex-direction: column;
   flex: 1;
+  height: 130px;
   justify-content: center;
 `;
 

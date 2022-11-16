@@ -20,9 +20,6 @@ const Home: React.FC<Props> = ({navigation}) => (
     <ButtonView onPress={() => navigation.navigate('AddNewCryptocurrency')}>
       <ButtonText>+ Add New Crypto Currency</ButtonText>
     </ButtonView>
-    {/* <RegularButton onPress={navigation.navigate('AddNewCryptocurrency')}>
-      + Add a Cryptocurrency
-    </RegularButton> */}
   </HomeContainer>
 );
 
