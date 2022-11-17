@@ -1,9 +1,9 @@
 import styled from 'styled-components/native';
 import theme from '../../utils/theme';
 
-interface CryptoAdd {
+type CryptoAdd = {
   readonly isActive: boolean;
-}
+};
 
 //CryptoItem Styles
 export const CryptoItemRow = styled.View`
@@ -91,6 +91,17 @@ export const Divider = styled.View`
   border-bottom-width: 0.1px;
   border: ${theme.colors.neutral};
   margin-bottom: 20px;
+`;
+
+export const NotCryptoView = styled.View`
+  justify-content: center;
+  align-items: center;
+  margin-top: 50%;
+`;
+
+export const NotCrypto = styled.Text`
+  font-size: 24px;
+  text-align: center;
 `;
 
 //CryptoAddForm

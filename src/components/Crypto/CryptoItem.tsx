@@ -18,34 +18,32 @@ import {
 import up from '../../assets/arrow-up.png';
 import down from '../../assets/arrow-down.png';
 
-const CryptoItem: React.FC<CryptoProps> = item => (
+const CryptoItem: React.FC<CryptoProps> = ({id, name, symbol, market_data}) => (
   <CryptoItemRow>
     <LeftView>
       <StyledView>
         <Image
           source={{
-            uri: `https://messari.io/asset-images/${item.id}/32.png`,
+            uri: `https://messari.io/asset-images/${id}/128.png`,
           }}
         />
       </StyledView>
       <LeftData>
-        <CryptoName>{item.name}</CryptoName>
-        <CryptoSlug>{item.symbol}</CryptoSlug>
+        <CryptoName>{name}</CryptoName>
+        <CryptoSlug>{symbol}</CryptoSlug>
       </LeftData>
     </LeftView>
     <RightView>
-      <Price>${item.metrics.market_data.price_usd.toFixed(2)}</Price>
-      {item.metrics.market_data.percent_change_usd_last_24_hours > 0 ? (
+      <Price>${market_data.price_usd.toFixed(2)}</Price>
+      {market_data.percent_change_usd_last_24_hours > 0 ? (
         <TextGreen>
           <ArrowImage source={up} />
-          {item.metrics.market_data.percent_change_usd_last_24_hours.toFixed(2)}
-          %
+          {market_data.percent_change_usd_last_24_hours.toFixed(2)}%
         </TextGreen>
       ) : (
         <TextRed>
           <ArrowImage source={down} />
-          {item.metrics.market_data.percent_change_usd_last_24_hours.toFixed(2)}
-          %
+          {market_data.percent_change_usd_last_24_hours.toFixed(2)}%
         </TextRed>
       )}
     </RightView>

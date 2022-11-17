@@ -8,9 +8,37 @@ import {
   Title,
 } from './styles';
 
+import {useDispatch, useSelector} from 'react-redux';
+import {addNewCrypto} from '../../redux/actions';
+import {AppDispatch, RootState} from '../../redux';
+import {useNavigation} from '@react-navigation/native';
+import {Alert} from 'react-native';
+
 const CryptoAddForm = () => {
   const [input, setInput] = useState('');
-  const inputNull = input.length === 0;
+  const {navigate} = useNavigation();
+
+  const disabled = input.length === 0;
+
+  const dispatch = useDispatch<AppDispatch>();
+  const cryptos = useSelector((state: RootState) => state.cryptos.cryptos);
+
+  const findDuplicate = () => {
+    const res = cryptos.find(e => {
+      return e.symbol.toLowerCase() === input.toLowerCase();
+    });
+    return res;
+  };
+
+  const handleAdd = () => {
+    if (findDuplicate()) {
+      Alert.alert('This crypto is already in your list');
+    } else {
+      dispatch(addNewCrypto(input));
+      setInput('');
+      navigate('Home');
+    }
+  };
 
   return (
     <CryptoAddFormContainer>
@@ -18,12 +46,12 @@ const CryptoAddForm = () => {
       <Input
         placeholder="Use a name or ticker symbol..."
         placeholderTextColor={theme.colors.neutral}
-        value={input}
         onChangeText={setInput}
+        value={input}
         isActive={input.length > 0}
       />
-      <ButtonAdd onPress={() => {}} disabled={inputNull}>
-        <ButtonText disabled={inputNull}>Add</ButtonText>
+      <ButtonAdd onPress={handleAdd} disabled={disabled}>
+        <ButtonText disabled={disabled}>Add</ButtonText>
       </ButtonAdd>
     </CryptoAddFormContainer>
   );

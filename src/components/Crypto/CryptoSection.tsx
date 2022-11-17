@@ -2,13 +2,19 @@ import React from 'react';
 import {ListRenderItem} from 'react-native';
 import {FlatList} from 'react-native-gesture-handler';
 import {CryptoProps} from '../../interfaces';
-import {CryptoSectionBackground, Divider} from './styles';
+import {
+  CryptoSectionBackground,
+  Divider,
+  NotCrypto,
+  NotCryptoView,
+} from './styles';
 import CryptoItem from './CryptoItem';
-import useFetchCollection from '../../hooks/useFetchCollection';
-import Loading from '../Loader';
+
+import {useSelector} from 'react-redux';
+import {RootState} from '../../redux';
 
 const CryptoSection = () => {
-  const {coins, loading} = useFetchCollection();
+  const cryptos = useSelector((state: RootState) => state.cryptos.cryptos);
 
   const renderItem: ListRenderItem<CryptoProps> = ({item}) => (
     <CryptoItem {...item} />
@@ -16,9 +22,13 @@ const CryptoSection = () => {
 
   return (
     <CryptoSectionBackground>
-      {loading && <Loading />}
+      {cryptos <= 0 && (
+        <NotCryptoView>
+          <NotCrypto>There is not Crypto Currencies, please add one</NotCrypto>
+        </NotCryptoView>
+      )}
       <FlatList
-        data={coins}
+        data={cryptos}
         showsVerticalScrollIndicator={false}
         keyExtractor={item => item.id}
         renderItem={renderItem}
