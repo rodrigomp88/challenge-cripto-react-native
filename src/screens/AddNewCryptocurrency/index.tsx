@@ -16,7 +16,7 @@ const AddNewCryptocurrency: React.FC<Props> = ({navigation}) => {
       <ButtonView onPress={() => navigation.navigate('Home')}>
         <ButtonText>{'< Back to list'}</ButtonText>
       </ButtonView>
-      <CryptoAddForm />
+      <CryptoAddForm navigation={navigation} />
     </AddContainer>
   );
 };

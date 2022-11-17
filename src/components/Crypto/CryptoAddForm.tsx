@@ -11,12 +11,12 @@ import {
 import {useDispatch, useSelector} from 'react-redux';
 import {addNewCrypto} from '../../redux/actions';
 import {AppDispatch, RootState} from '../../redux';
-import {useNavigation} from '@react-navigation/native';
+// import {useNavigation} from '@react-navigation/native';
 import {Alert} from 'react-native';
 
-const CryptoAddForm = () => {
+const CryptoAddForm = ({navigation}) => {
   const [input, setInput] = useState('');
-  const {navigate} = useNavigation();
+  // const {navigate} = useNavigation();
 
   const disabled = input.length === 0;
 
@@ -36,7 +36,7 @@ const CryptoAddForm = () => {
     } else {
       dispatch(addNewCrypto(input));
       setInput('');
-      navigate('Home');
+      navigation.navigate('Home');
     }
   };
 
