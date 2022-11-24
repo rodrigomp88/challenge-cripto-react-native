@@ -6,7 +6,7 @@ type CryptoAdd = {
 };
 
 //CryptoItem Styles
-export const CryptoItemRow = styled.View`
+export const CryptoItemContainer = styled.TouchableOpacity`
   flex-direction: row;
   justify-content: space-between;
   align-items: center;

@@ -11,7 +11,7 @@ import {
 import CryptoItem from './CryptoItem';
 
 import {useSelector} from 'react-redux';
-import {RootState} from '../../redux';
+import {RootState} from '../../store';
 
 const CryptoSection = () => {
   const cryptos = useSelector((state: RootState) => state.cryptos.cryptos);
@@ -30,7 +30,7 @@ const CryptoSection = () => {
       <FlatList
         data={cryptos}
         showsVerticalScrollIndicator={false}
-        keyExtractor={item => item.id}
+        keyExtractor={item => item.id.toString()}
         renderItem={renderItem}
         ItemSeparatorComponent={Divider}
       />

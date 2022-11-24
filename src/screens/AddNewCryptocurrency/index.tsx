@@ -1,10 +1,11 @@
 import React from 'react';
+import {StatusBar} from 'react-native';
 import {AddContainer, ButtonText, ButtonView} from './styles';
 
 import {StackScreenProps} from '@react-navigation/stack';
 import {PropsNavigator} from '../../navigator/RootStack';
-import CryptoAddForm from '../../components/Crypto/CryptoAddForm';
-import {StatusBar} from 'react-native';
+
+import CryptoAddForm from '../../components/Crypto/CryptoAdd';
 import theme from '../../utils/theme';
 
 type Props = StackScreenProps<PropsNavigator>;

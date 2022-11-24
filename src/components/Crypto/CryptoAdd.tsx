@@ -9,30 +9,29 @@ import {
 } from './styles';
 
 import {useDispatch, useSelector} from 'react-redux';
-import {addNewCrypto} from '../../redux/actions';
-import {AppDispatch, RootState} from '../../redux';
-// import {useNavigation} from '@react-navigation/native';
+import {addNewCrypto} from '../../store/actions';
+import {AppDispatch, RootState} from '../../store';
 import {Alert} from 'react-native';
+import {CryptoProps} from '../../interfaces';
 
 const CryptoAddForm = ({navigation}) => {
   const [input, setInput] = useState('');
-  // const {navigate} = useNavigation();
 
   const disabled = input.length === 0;
 
-  const dispatch = useDispatch<AppDispatch>();
-  const cryptos = useSelector((state: RootState) => state.cryptos.cryptos);
-
-  const findDuplicate = () => {
-    const res = cryptos.find(e => {
+  const findCrypto = () => {
+    const res = cryptos.find((e: CryptoProps) => {
       return e.symbol.toLowerCase() === input.toLowerCase();
     });
     return res;
   };
 
+  const dispatch = useDispatch<AppDispatch>();
+  const cryptos = useSelector((state: RootState) => state.cryptos.cryptos);
+
   const handleAdd = () => {
-    if (findDuplicate()) {
-      Alert.alert('This crypto is already in your list');
+    if (findCrypto()) {
+      Alert.alert('This crypto currently already exists in your account');
     } else {
       dispatch(addNewCrypto(input));
       setInput('');
