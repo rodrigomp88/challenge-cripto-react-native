@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {ListRenderItem} from 'react-native';
 import {FlatList} from 'react-native-gesture-handler';
 import {CryptoProps} from '../../interfaces';
@@ -11,10 +11,19 @@ import {
 import CryptoItem from './CryptoItem';
 
 import {useSelector} from 'react-redux';
-import {RootState} from '../../store';
+import {RootState, useAppDispatch} from '../../store';
+import {updateCrypto} from '../../store/actions';
 
 const CryptoSection = () => {
+  const dispatch = useAppDispatch();
   const cryptos = useSelector((state: RootState) => state.cryptos.cryptos);
+
+  useEffect(() => {
+    const time = setInterval(() => {
+      dispatch(updateCrypto(cryptos));
+    }, 5000);
+    return () => clearInterval(time);
+  }, [cryptos, dispatch]);
 
   const renderItem: ListRenderItem<CryptoProps> = ({item}) => (
     <CryptoItem {...item} />
@@ -24,7 +33,7 @@ const CryptoSection = () => {
     <CryptoSectionBackground>
       {cryptos <= 0 && (
         <NotCryptoView>
-          <NotCrypto>There is not Crypto Currencies, please add one</NotCrypto>
+          <NotCrypto>There is no Crypto Currencies, please add one</NotCrypto>
         </NotCryptoView>
       )}
       <FlatList

@@ -8,26 +8,28 @@ import {
   Title,
 } from './styles';
 
-import {useDispatch, useSelector} from 'react-redux';
-import {addNewCrypto} from '../../store/actions';
-import {AppDispatch, RootState} from '../../store';
+import {useSelector} from 'react-redux';
+import {RootState, useAppDispatch} from '../../store';
 import {Alert} from 'react-native';
+import {addNewCrypto} from '../../store/actions';
 import {CryptoProps} from '../../interfaces';
 
 const CryptoAddForm = ({navigation}) => {
   const [input, setInput] = useState('');
+  const dispatch = useAppDispatch();
+  const cryptos = useSelector((state: RootState) => state.cryptos.cryptos);
 
   const disabled = input.length === 0;
 
   const findCrypto = () => {
     const res = cryptos.find((e: CryptoProps) => {
-      return e.symbol.toLowerCase() === input.toLowerCase();
+      return (
+        e.symbol.toLowerCase() === input.toLowerCase() ||
+        e.name.toLowerCase() === input.toLowerCase()
+      );
     });
     return res;
   };
-
-  const dispatch = useDispatch<AppDispatch>();
-  const cryptos = useSelector((state: RootState) => state.cryptos.cryptos);
 
   const handleAdd = () => {
     if (findCrypto()) {

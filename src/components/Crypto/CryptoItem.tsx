@@ -17,13 +17,12 @@ import {
 
 import up from '../../assets/arrow-up.png';
 import down from '../../assets/arrow-down.png';
-import {useDispatch} from 'react-redux';
 import {Alert} from 'react-native';
 import {deleteCrypto} from '../../store/actions';
-import {AppDispatch} from '../../store';
+import {useAppDispatch} from '../../store';
 
 const CryptoItem: React.FC<CryptoProps> = ({id, name, symbol, market_data}) => {
-  const dispatch = useDispatch<AppDispatch>();
+  const dispatch = useAppDispatch();
 
   const deleteCurrency = () => {
     Alert.alert('Delete', 'Do you want to delete this crypto?', [
